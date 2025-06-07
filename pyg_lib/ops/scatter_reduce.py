@@ -50,9 +50,9 @@ def fused_scatter_reduce_kernel(inputs_ptr, index_ptr, out_ptr, num_feats,
             tl.atomic_add(out_ptr + out_offsets, inputs, mask=mask)
         elif REDUCE1 == 2:  # mean
             tl.atomic_add(out_ptr + out_offsets, inputs, mask=mask)
-        elif REDUCE2 == 3:  # min
+        elif REDUCE1 == 3:  # min
             tl.atomic_min(out_ptr + out_offsets, inputs, mask=mask)
-        elif REDUCE3 == 4:  # max
+        elif REDUCE1 == 4:  # max
             tl.atomic_max(out_ptr + out_offsets, inputs, mask=mask)
 
     if REDUCE2 > 0:
